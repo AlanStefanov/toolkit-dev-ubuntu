@@ -15,17 +15,18 @@
 
 > Instalador interactivo para Ubuntu/Debian con las herramientas esenciales para desarrollo y operaciones.
 
-![UI Preview](https://img.shields.io/badge/UI-whiptail-brightgreen?style=flat-square)
+![UI](https://img.shields.io/badge/UI-TUI_Propio-blue?style=flat-square)
 ![Platform](https://img.shields.io/badge/Platform-Ubuntu%20%7C%20Debian-orange?style=flat-square)
 ![Shell](https://img.shields.io/badge/Shell-Bash-blue?style=flat-square)
 
 ## ✨ Características
 
-- **Interfaz interactiva** — Checklist con whiptail para seleccionar solo lo que necesitás
+- **Interfaz TUI interactiva** — Menú propio con navegación por teclado (↑↓), selección múltiple con espacio, "Todos/Ninguno"
 - **Instalación secuencial** — Cada herramienta se instala de forma independiente con feedback visual
 - **Detección inteligente** — Saltea herramientas ya instaladas
 - **Log detallado** — Todo queda registrado en `/tmp/toolkit-install-*.log`
-- **Sin dependencias pesadas** — Solo necesita `whiptail` (se instala automáticamente si falta)
+- **Orden por dependencias** — Las herramientas se instalan en orden para que las dependencias estén listas
+- **sudo automático** — Detecta si necesita sudo y pide contraseña si es necesario
 
 ## 🚀 Uso
 
@@ -46,22 +47,55 @@ bash <(curl -fsSL https://raw.githubusercontent.com/AlanStefanov/toolkit-dev-ubu
 
 ## 📦 Herramientas incluidas
 
+### 🧱 Base del Sistema
+
+| Herramienta | Descripción |
+|-------------|-------------|
+| **git + curl + wget** | Control de versiones y descarga |
+| **build-essential** | GCC, G++ y herramientas de build |
+| **GNU Make** | Automatización de builds |
+| **OpenSSH Server** | Servidor SSH habilitado |
+| **tree** | Visualización de directorios |
+
+### 🟢 Node / Python
+
+| Herramienta | Descripción |
+|-------------|-------------|
+| **nvm + Node.js LTS** | Gestor de versiones de Node.js |
+| **Python3 pip + venv** | Entorno Python completo |
+| **Yarn** | Gestor de paquetes Node.js rápido |
+| **ESLint** | Linter para JavaScript/TypeScript |
+
+### ☕ Lenguajes / Runtimes
+
+| Herramienta | Descripción |
+|-------------|-------------|
+| **SDKMAN! + JDK 21** | Gestor de JDKs + Java 21 LTS (Temurin) |
+| **Go** | Compilador y herramientas Go |
+| **Rust** | rustc + cargo + rustup |
+
+### 🐳 Contenedores
+
+| Herramienta | Descripción |
+|-------------|-------------|
+| **Docker Engine + Compose** | Contenedores (configurado sin sudo) |
+| **Portainer** | GUI web para gestión de Docker |
+| **act** | Corré GitHub Actions localmente |
+
 ### 🖥️ Editores / IDE
 
 | Herramienta | Descripción |
 |-------------|-------------|
-| **Visual Studio Code** | Editor de código multiplataforma de Microsoft |
-| **Sublime Text 4** | Editor de texto rápido y liviano |
-| **Neovim** | Editor CLI moderno (fork de Vim) |
+| **Visual Studio Code** | Editor de Microsoft con extensiones |
+| **Sublime Text 4** | Editor rápido y liviano |
+| **Neovim** | Editor CLI moderno |
 | **OpenCode** | CLI de IA para asistencia en código |
 
-### 🚀 Terminales
+### 🤖 IA en el Terminal
 
 | Herramienta | Descripción |
 |-------------|-------------|
-| **Alacritty** | Terminal con aceleración GPU |
-| **Warp Terminal** | Terminal moderna con integración de AI |
-| **Tmux** | Multiplexor de terminal (múltiples paneles/ventanas) |
+| **Claude Code CLI** | Asistente IA de Anthropic en terminal |
 
 ### 🗄️ Bases de Datos
 
@@ -70,60 +104,70 @@ bash <(curl -fsSL https://raw.githubusercontent.com/AlanStefanov/toolkit-dev-ubu
 | **DBeaver CE** | Gestor de bases de datos universal |
 | **psql + sqlite3 + mysql-client** | Clientes CLI para PostgreSQL, SQLite y MySQL |
 | **Turso CLI** | CLI para Turso (base de datos edge/libsql) |
+| **MongoDB Compass** | GUI oficial para MongoDB |
+| **Redis Server + CLI** | Base de datos en memoria clave-valor |
+| **Redis Insight** | GUI oficial para administrar Redis |
 
 ### ☁️ Cloud / Infra
 
 | Herramienta | Descripción |
 |-------------|-------------|
 | **AWS CLI v2** | Interfaz de línea de comandos de AWS |
-| **GitHub CLI (gh)** | Interfaz de GitHub desde la terminal |
-| **kubectl** | CLI de Kubernetes |
+| **GitHub CLI (gh)** | GitHub desde la terminal |
 | **Helm** | Package manager para Kubernetes |
-| **Terraform** | Infrastructure as Code de HashiCorp |
+| **Terraform** | Infraestructura como código (IaC) |
+| **ngrok** | Túnel HTTP para exponer localhost |
+| **Ansible** | Automatización y configuración devops |
 
-### 🐳 Contenedores
-
-| Herramienta | Descripción |
-|-------------|-------------|
-| **Docker Engine + Compose** | Contenedores (configurado sin sudo) |
-| **Portainer** | GUI web para gestión de Docker |
-
-### 🛠️ Dev Essentials
+### ☸️ Kubernetes
 
 | Herramienta | Descripción |
 |-------------|-------------|
-| **nvm + Node.js LTS** | Version manager + Node.js |
-| **python3-pip + venv** | Python package manager y entornos virtuales |
-| **build-essential** | Compilador GCC, make y herramientas de build |
-| **git + curl + wget** | Herramientas fundamentales |
-| **GNU Make** | Automatización de builds |
-| **OpenSSH Server** | Servidor SSH para acceso remoto |
-| **tree** | Visualización de directorios en árbol |
+| **kubectl** | CLI para clústeres Kubernetes |
+| **k9s** | TUI interactiva para gestionar Kubernetes |
+
+### 🛠️ Dev Local
+
+| Herramienta | Descripción |
+|-------------|-------------|
+| **direnv** | Variables de entorno por directorio (.envrc) |
+| **mkcert** | Certificados HTTPS locales sin warnings |
+| **Zsh + Oh My Zsh** | Shell moderna con plugins y autosuggestions |
+
+### 🚀 Terminales
+
+| Herramienta | Descripción |
+|-------------|-------------|
+| **Warp Terminal** | Terminal moderna con IA integrada |
+| **Tmux** | Multiplexor de sesiones |
 
 ### ⚡ CLI Power-ups
 
 | Herramienta | Descripción |
 |-------------|-------------|
-| **jq** | Procesador JSON desde la terminal |
-| **htop** | Monitor interactivo de procesos |
-| **fzf** | Fuzzy finder universal (búsqueda rápida) |
-| **ripgrep (rg)** | Búsqueda recursiva ultrarrápida en código |
+| **jq** | Procesador JSON en terminal |
+| **htop** | Monitor de procesos interactivo |
+| **fzf** | Búsqueda fuzzy para CLI |
+| **ripgrep (rg)** | grep ultra-rápido |
 | **bat** | cat con syntax highlighting |
-| **lazygit** | Interfaz TUI para Git |
+| **lazygit** | Git con UI interactiva en terminal |
+| **eza** | ls con colores, icons y git status |
+| **zoxide** | Navegación inteligente de directorios |
+| **fd** | find rápido con sintaxis intuitiva |
 
 ### 🔌 API Client
 
 | Herramienta | Descripción |
 |-------------|-------------|
-| **Postman** | Cliente HTTP para testing de APIs (via Flatpak) |
+| **Postman** | Cliente visual para APIs REST |
 
 ### 🎨 Sistema / UI
 
 | Herramienta | Descripción |
 |-------------|-------------|
-| **Dash to Dock** | Dock tipo macOS para GNOME |
-| **sudo sin contraseña** | Configura NOPASSWD para tu usuario |
+| **Dash to Dock** | Dock estilo macOS para GNOME |
 | **VLC Media Player** | Reproductor multimedia universal |
+| **sudo sin contraseña** | Configura NOPASSWD para tu usuario |
 
 ## 🧩 Agregar herramientas
 
